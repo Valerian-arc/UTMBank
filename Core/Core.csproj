@@ -126,8 +126,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="DTOs\UserLogInDTO.cs" />
     <Compile Include="DTOs\UserRegisterDTO.cs" />
     <Compile Include="Interfaces\ISession.cs" />
+    <Compile Include="Models\UserLogInViewModel.cs" />
     <Compile Include="Models\UserRegisterViewModel.cs" />
     <Compile Include="Profiles\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,14 +1,17 @@
 ﻿using Core.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Core.Models;
+using Domain.Entites;
+using Helpers.Responses;
+using System.Web;
 
 namespace Core.Services.UserServices
 {
     public interface IUserService
     {
         void Register(UserRegisterDTO user);
+        LogInResponse LogIn(UserLogInDTO user);
+        HttpCookie Cookie(string email);
+        User GetUserByCookie(string cookie);
+        void LogOut(string cookieValue);
     }
 }
