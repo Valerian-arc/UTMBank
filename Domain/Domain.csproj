@@ -130,9 +130,14 @@
     <Compile Include="Data\Migrations\202503232135474_Init.Designer.cs">
       <DependentUpon>202503232135474_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Migrations\202504192215378_Create_Session_Table.cs" />
+    <Compile Include="Data\Migrations\202504192215378_Create_Session_Table.Designer.cs">
+      <DependentUpon>202504192215378_Create_Session_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="DI\AutoMapperResolver.cs" />
     <Compile Include="Entites\BaseEntity.cs" />
+    <Compile Include="Entites\Session.cs" />
     <Compile Include="Entites\User.cs" />
     <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,6 +147,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\Migrations\202503232135474_Init.resx">
       <DependentUpon>202503232135474_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202504192215378_Create_Session_Table.resx">
+      <DependentUpon>202504192215378_Create_Session_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
