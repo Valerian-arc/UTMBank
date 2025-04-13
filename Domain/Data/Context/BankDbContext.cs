@@ -10,5 +10,6 @@ namespace Domain.Data.Context
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }
