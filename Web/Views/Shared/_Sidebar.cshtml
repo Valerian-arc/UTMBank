@@ -72,7 +72,10 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="@Url.Action("NotFound", "Error")">404 Page</a>
-            <a class="collapse-item" href="@Url.Action("Blank", "Home")">Blank Page</a>
+            @if (Helpers.RoleCheck.IsAdmin.IsUserAdmin())
+            {
+                <a class="collapse-item" href="@Url.Action("Blank", "Home")">Blank Page</a>
+            }
         </div>
     </div>
 </li>
