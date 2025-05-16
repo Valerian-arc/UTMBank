@@ -18,7 +18,7 @@
 <li class="nav-item active">
     <a class="nav-link" href="@Url.Action("Index", "Home")">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Statistics</span>
+        <span>Main page</span>
     </a>
 </li>
 
@@ -27,21 +27,44 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Interface
+    Actions
 </div>
+
+<li class="nav-item">
+    <a class="nav-link" href="@Url.Action("Index", "Card")">
+        <i class="fas fa-fw fa-credit-card"></i> <!-- Changed to credit card icon -->
+        <span>My Cards</span>
+    </a>
+</li>
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
        aria-expanded="false" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
+        <i class="fas fa-exchange-alt"></i>
+        <span>Transfer</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="@Url.Action("Buttons", "Components")">Buttons</a>
-            <a class="collapse-item" href="@Url.Action("Cards", "Components")">Cards</a>
+            <h6 class="collapse-header">Options:</h6>
+            <a class="collapse-item" href="@Url.Action("ExternalTransfer", "Card")">To another person</a>
+            <a class="collapse-item" href="@Url.Action("LocalTransfer", "Card")">To another card</a>
+        </div>
+    </div>
+</li>
+
+<!-- New Card Managing Dropdown -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCardManaging"
+       aria-expanded="false" aria-controls="collapseCardManaging">
+        <i class="fas fa-columns"></i>
+        <span>Card Managing</span>
+    </a>
+    <div id="collapseCardManaging" class="collapse" aria-labelledby="headingCardManaging" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Actions:</h6>
+            <a class="collapse-item" href="@Url.Action("Deposit", "Card")">Deposit</a>
+            <a class="collapse-item" href="@Url.Action("Withdraw", "Card")">Withdraw</a>
         </div>
     </div>
 </li>
@@ -49,42 +72,25 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-    Addons
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-       aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Pages</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="@Url.Action("Login", "Account")">Login</a>
-            <a class="collapse-item" href="@Url.Action("Register", "Account")">Register</a>
-            <a class="collapse-item" href="@Url.Action("ForgotPassword", "Account")">Forgot Password</a>
-            <a class="collapse-item" href="@Url.Action("Transfer", "Banking")">Transfer Page</a>
-            <a class="collapse-item" href="@Url.Action("TransferLocal", "Banking")">Local Transfer Page</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="@Url.Action("NotFound", "Error")">404 Page</a>
-            @if (Helpers.RoleCheck.IsAdmin.IsUserAdmin())
-            {
-                <a class="collapse-item" href="@Url.Action("Blank", "Home")">Blank Page</a>
-            }
-        </div>
+@if (Helpers.RoleCheck.IsAdmin.IsUserAdmin())
+{
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Admin
     </div>
-</li>
 
-<!-- Nav Item - Tables -->
-<li class="nav-item">
-    <a class="nav-link" href="@Url.Action("Index", "Tables")">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span>
-    </a>
-</li>
-<!-- End of Sidebar -->
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Managers</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Admin actions:</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Admin")">Manage Users</a>
+            </div>
+        </div>
+    </li>
+}

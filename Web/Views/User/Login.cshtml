@@ -5,58 +5,68 @@
     Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
 }
 
-<div class="container">
+<section>
+    <!-- Jumbotron Section -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <!-- Left Text Section -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="my-5 display-4 fw-bold ls-tight">
+                        Welcome Back! <br />
+                        <span class="text-primary">Login to your account</span>
+                    </h1>
+                    <p style="color: hsl(217, 10%, 50.8%)">
+                        Login to access your dashboard and continue with your personal banking.
+                    </p>
+                </div>
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
+                <!-- Right Form Section -->
+                <div class="col-lg-6">
+                    <div class="card shadow border-0">
+                        <div class="card-body p-5">
+                            @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
 
-        <div class="col-xl-10 col-lg-12 col-md-9">
+                                <h4 class="mb-4 text-center">Login</h4>
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                <!-- Email Input -->
+                                <div class="mb-3">
+                                    <label class="form-label">@Html.DisplayNameFor(m => m.Email)</label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control w-100", type = "email" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 </div>
-                                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "user" }))
-                                {
-                                    @Html.AntiForgeryToken()
 
-                                    <div class="form-group row">
-                                        <div class="col-sm-16 mb-3 mb-sm-0">
-                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-user", placeholder = "Email" })
-                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-16 mb-3 mb-sm-0">
-                                            @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-user", placeholder = "Password" })
-                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
+                                <!-- Password Input -->
+                                <div class="mb-3">
+                                    <label class="form-label">@Html.DisplayNameFor(m => m.Password)</label>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control w-100" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
 
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
-                                }
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <!-- Login Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
                                 </div>
+
+                                <!-- Divider -->
+                                <hr class="my-4" />
+
+                                <!-- Register Link -->
                                 <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
+                                    <a class="small" href="@Url.Action("Register", "User")">
+                                        Don't have an account? Create one now!
+                                    </a>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
-</div>
-
+    <!-- Jumbotron Section End -->
+</section>

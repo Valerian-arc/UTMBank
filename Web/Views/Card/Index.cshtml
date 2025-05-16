@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Domain.Entites.Card>
+
+@{
+    ViewBag.Title = "My Cards";
+
+    var colors = new[] { "bg-primary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-secondary", "bg-dark", "bg-purple", "bg-pink", "bg-teal" };
+    var rand = new Random();
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card-item {
+        width: 18rem;
+        margin: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-name {
+        font-weight: bold;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        font-size: 1.25rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .card-description {
+        font-size: 1rem;
+        color: #555;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .card-amount {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    .card-footer {
+        padding: 1rem;
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        border-radius: 4px;
+    }
+
+    /* Custom colors */
+    .bg-purple {
+        background-color: #6f42c1 !important;
+    }
+
+    .bg-pink {
+        background-color: #d63384 !important;
+    }
+
+    .bg-teal {
+        background-color: #20c997 !important;
+    }
+</style>
+
+<div class="container mt-4">
+    <!-- Create Card Button -->
+    <div class="d-flex justify-content-end mb-3">
+        <a href="@Url.Action("Create", "Card")" class="btn btn-primary">Create Card</a>
+    </div>
+
+    <div class="card-container">
+        @if (Model == null || !Model.Any())
+        {
+            <span>There are no cards</span>
+        }
+        else
+        {
+            foreach (var card in Model)
+            {
+                var colorClass = colors[rand.Next(colors.Length)];
+                <div class="card card-item">
+                    <!-- Dropdown menu -->
+                    <div class="dropdown position-absolute" style="top: 0.5rem; right: 0.5rem;">
+                        <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("Edit", "Card", new { id = card.Id })">Edit</a>
+                            </li>
+                            <li>
+                                @using (Html.BeginForm("Delete", "Card", FormMethod.Post, new { @class = "d-inline" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("id", card.Id)
+                                    <button type="submit" class="dropdown-item text-danger w-100 text-start" style="background: none; border: none;">
+                                        Delete
+                                    </button>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="card-header card-name @colorClass">
+                        @card.Name
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">@card.Description</p>
+                        <div class="card-footer">
+                            <p class="card-amount">&euro; <span>@card.Amount.ToString("N2")</span></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

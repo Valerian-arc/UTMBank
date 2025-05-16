@@ -279,7 +279,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\RequireLoginAttribute.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -323,6 +325,22 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Card\Create.cshtml" />
+    <Content Include="Views\Card\Index.cshtml" />
+    <Content Include="Views\Card\Edit.cshtml" />
+    <Content Include="Views\Card\ExternalTransfer.cshtml" />
+    <Content Include="Views\Card\LocalTransfer.cshtml" />
+    <Content Include="Views\Card\Deposit.cshtml" />
+    <Content Include="Views\Card\Withdraw.cshtml" />
+    <Content Include="Views\Card\History.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Card\DepositSuccess.cshtml" />
+    <Content Include="Views\Card\WithdrawSuccess.cshtml" />
+    <Content Include="Views\Card\ExternalTransferSuccess.cshtml" />
+    <Content Include="Views\Card\LocalTransferSuccess.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

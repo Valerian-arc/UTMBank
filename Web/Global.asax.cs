@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using AutoMapper;
+using Core.Profiles;
+using Core.Services.CardServices;
 using Core.Services.UserServices;
 using Domain.Data.Context;
 using Domain.Repositories;
@@ -50,12 +52,18 @@ namespace Web
                    .As<IUserService>()
                    .InstancePerRequest();
 
+            // Register CardService
+            builder.RegisterType<CardService>()
+                .As<ICardService>()
+                .InstancePerRequest();
+
             // Register AutoMapper
             builder.Register(c =>
             {
                 var config = new MapperConfiguration(cfg =>
                 {
                     cfg.AddProfile(new UserProfile());
+                    cfg.AddProfile(new CardProfile());
                 });
 
                 var mapper = config.CreateMapper();
@@ -64,6 +72,8 @@ namespace Web
 
             // Register UserController explicitly
             builder.RegisterType<UserController>().InstancePerRequest();
+            builder.RegisterType<CardController>().InstancePerRequest();
+            builder.RegisterType<AdminController>().InstancePerRequest();
         }
     }
 }
