@@ -2,9 +2,7 @@
 using Core.DTOs;
 using Core.Models;
 using Core.Services.UserServices;
-using Helpers.Responses;
 using System;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Web.Models;
