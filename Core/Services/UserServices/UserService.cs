@@ -5,6 +5,7 @@ using Domain.Repositories;
 using Helpers.Login;
 using Helpers.Responses;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,9 @@ namespace Core.Services.UserServices
         private readonly IGenericRepository<User> _userRepository;
         private readonly IGenericRepository<Session> _sessionRepository;
 
-        public UserService(IMapper mapper, IGenericRepository<User> userRepository, IGenericRepository<Session> sessionRepository)
+        public UserService(IMapper mapper, 
+            IGenericRepository<User> userRepository,
+            IGenericRepository<Session> sessionRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
@@ -133,6 +136,26 @@ namespace Core.Services.UserServices
             {
                 _sessionRepository.Delete(session.Id);
             }
+        }
+
+        public List<User> GetUsers()
+        {
+            return _userRepository.GetAll().ToList();
+        }
+
+        public User GetById(int id)
+        {
+            return _userRepository.GetById(id);
+        }
+
+        public void Update(User user)
+        {
+            _userRepository.Update(user);
+        }
+
+        public void Delete(int id)
+        {
+            _userRepository.Delete(id);
         }
     }
 }
