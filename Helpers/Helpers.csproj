@@ -125,6 +125,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Checks\GetUserData.cs" />
     <Compile Include="Checks\IsLogged.cs" />
     <Compile Include="HttpContext\HttpContextExtensions.cs" />
     <Compile Include="Login\CookieGenerator.cs" />
