@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Deposit Success";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Deposit Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background: #d1f2eb;
+        }
+
+        .success-container {
+            max-width: 600px;
+            margin: 80px auto;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: #17a2b8;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .success-message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .success-button {
+            font-size: 16px;
+            padding: 12px 24px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">💰</div>
+        <h2 class="success-title">Deposit Successful</h2>
+        <p class="success-message">Your deposit was successfully added to your account.</p>
+        <a href="@Url.Action("Index", "Card")" class="btn btn-info success-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

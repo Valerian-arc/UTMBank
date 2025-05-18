@@ -126,13 +126,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="DTOs\Admin\UserCreateDTO.cs" />
+    <Compile Include="DTOs\Admin\UserEditDTO.cs" />
+    <Compile Include="DTOs\CardActions\DepositTransferDTO.cs" />
+    <Compile Include="DTOs\CardDTOs\CardCreateDTO.cs" />
+    <Compile Include="DTOs\CardDTOs\CardUpdateDTO.cs" />
+    <Compile Include="DTOs\Transfer\ExternalTransferDTO.cs" />
+    <Compile Include="DTOs\Transfer\LocalTransferDTO.cs" />
     <Compile Include="DTOs\UserLogInDTO.cs" />
     <Compile Include="DTOs\UserRegisterDTO.cs" />
     <Compile Include="Interfaces\ISession.cs" />
+    <Compile Include="Models\CardModels\BaseCardModel.cs" />
+    <Compile Include="Models\CardModels\UpsertCardModel.cs" />
+    <Compile Include="Models\TransferResult.cs" />
     <Compile Include="Models\UserLogInViewModel.cs" />
     <Compile Include="Models\UserRegisterViewModel.cs" />
+    <Compile Include="Profiles\CardProfile.cs" />
     <Compile Include="Profiles\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CardServices\CardService.cs" />
+    <Compile Include="Services\CardServices\ICardService.cs" />
     <Compile Include="Services\UserServices\IUserService.cs" />
     <Compile Include="Services\UserServices\UserService.cs" />
     <Compile Include="SessionBL.cs" />

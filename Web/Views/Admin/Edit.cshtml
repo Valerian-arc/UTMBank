@@ -1,0 +1,54 @@
+﻿@model Core.DTOs.Admin.UserEditDTO
+
+@{
+    ViewBag.Title = "Edit User";
+}
+
+<h2>Edit User</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <!-- Hidden Password Field -->
+    @Html.HiddenFor(m => m.Password)
+
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" id="Password" class="form-control" style="display:none" />
+    </div>
+
+    <!-- Role Dropdown -->
+    <div class="form-group">
+        @Html.LabelFor(m => m.Role)
+        @Html.DropDownListFor(
+                      m => m.Role,
+                      new SelectList(Enum.GetValues(typeof(Domain.Enums.UserRole))),
+                      "- Select Role -",
+                      new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Role)
+    </div>
+
+    <button type="submit" class="btn btn-warning">Save Changes</button>
+}
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
