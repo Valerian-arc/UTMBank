@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Banking Transfer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .transfer-container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .transfer-header {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: 500;
+        }
+        .confirm-btn {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+        .confirm-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="transfer-container">
+    <div class="transfer-header">Bank Transfer</div>
+    <form method="post">
+        <div class="mb-3">
+            <label for="SourceCard" class="form-label">Select source card</label>
+            <select class="form-select" id="SourceCard" name="SourceCard">
+                <option value="">Select a Card</option>
+                <!-- Options will be added dynamically -->
+            </select>
+            <span class="text-danger" id="SourceCardError"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Money" class="form-label">Amount</label>
+            <input type="text" class="form-control" id="Money" name="Money" placeholder="Enter amount">
+            <span class="text-danger" id="MoneyError"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="DestinatorEmail" class="form-label">Recipient Email</label>
+            <input type="email" class="form-control" id="DestinatorEmail" name="DestinatorEmail" placeholder="Enter recipient email">
+            <span class="text-danger" id="DestinatorEmailError"></span>
+        </div>
+
+        <button type="submit" class="confirm-btn">Confirm Transfer</button>
+    </form>
+</div>
+
+</body>
+</html>
